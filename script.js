@@ -8,7 +8,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    fetch(`http://www.omdbapi.com/?t=Interstellar&apikey=free`)
+    fetch(`http://www.omdbapi.com/?t=${query}&apikey=6441ac5e`)
     .then(response => response.json())
     .then(data => {
         if (data.Response === "True") {
