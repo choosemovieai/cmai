@@ -1,13 +1,13 @@
 * {
-    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
     font-family: Arial, sans-serif;
-    background-color: #121212;
+/*     background-color: #121212; */
     color: white;
     line-height: 1.6;
     background-image: url('background.jpg'); /* Replace with your image URL */
