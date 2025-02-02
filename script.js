@@ -1,4 +1,22 @@
 // script.js
+const mockData = [
+    {
+        title: "Interstellar",
+        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+        genres: ["Sci-Fi", "Adventure", "Drama"],
+        rating: 8.6,
+        age_restriction: "PG-13",
+        poster_url: "https://example.com/poster.jpg"
+    },
+    {
+        title: "Inception",
+        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into a target's mind.",
+        genres: ["Sci-Fi", "Action", "Thriller"],
+        rating: 8.8,
+        age_restriction: "PG-13",
+        poster_url: "https://example.com/poster2.jpg"
+    }
+];
 
 document.getElementById('searchButton').addEventListener('click', function() {
     const query = document.getElementById('movieInput').value;
@@ -8,39 +26,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    fetch(`http://www.omdbapi.com/?t=${query}&apikey=6441ac5e`)
-    .then(response => response.json())
-    .then(data => {
-        if (data.Response === "True") {
-            const movie = {
-                title: data.Title,
-                description: data.Plot,
-                genres: data.Genre.split(", "), // Разделяем жанры по запятой
-                rating: data.imdbRating,
-                age_restriction: data.Rated, // Возрастной рейтинг из OMDb
-                poster_url: data.Poster
-            };
-            displayMovies(JSON.stringify([movie])); // Оборачиваем в массив, чтобы совместить с форматом
-        } else {
-            console.error('Error: Movie not found');
-        }
-    })
-    .catch(error => console.error('Error fetching data:', error));
-
-    // fetch(`https://api.themoviedb.org/3/search/movie?api_key=YOUR_TMDB_API_KEY&query=${query}`)
-    // .then(response => response.json())
-    // .then(data => {
-    //     const movies = data.results.map(movie => ({
-    //         title: movie.title,
-    //         description: movie.overview,
-    //         genres: movie.genre_ids, // Нужно преобразовать ID в названия жанров
-    //         rating: movie.vote_average,
-    //         age_restriction: "N/A", // TMDb не предоставляет возрастной рейтинг напрямую
-    //         poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-    //     }));
-    //     displayMovies(JSON.stringify(movies));
-    // })
-    // .catch(error => console.error('Error fetching data:', error));
+    return displayMovies(mockData)
 
     // Отправляем запрос на мое API
     // fetch(`https://api.deepseek.com/v1/chat/completions`, {
