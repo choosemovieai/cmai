@@ -8,26 +8,41 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    // Отправляем запрос на мое API
-    fetch(`https://api.deepseek.com/v1/chat/completions`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer YOUR_DEEPSEEK_API_KEY`  // Вставьте ваш ключ API
-        },
-        body: JSON.stringify({
-            model: "deepseek-v3",  // или другой доступный модель
-            messages: [
-                {
-                    role: "user",
-                    content: `Find me a movie based on this description: ${query}`
-                }
-            ]
-        })
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=YOUR_TMDB_API_KEY&query=${query}`)
+    .then(response => response.json())
+    .then(data => {
+        const movies = data.results.map(movie => ({
+            title: movie.title,
+            description: movie.overview,
+            genres: movie.genre_ids, // Нужно преобразовать ID в названия жанров
+            rating: movie.vote_average,
+            age_restriction: "N/A", // TMDb не предоставляет возрастной рейтинг напрямую
+            poster_url: `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        }));
+        displayMovies(JSON.stringify(movies));
     })
-        .then(response => response.json())
-        .then(data => displayMovies(data.choices[0].message.content))
-        .catch(error => console.error('Error fetching data:', error));
+    .catch(error => console.error('Error fetching data:', error));
+
+    // Отправляем запрос на мое API
+    // fetch(`https://api.deepseek.com/v1/chat/completions`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         'Authorization': `Bearer YOUR_DEEPSEEK_API_KEY`  // Вставьте ваш ключ API
+    //     },
+    //     body: JSON.stringify({
+    //         model: "deepseek-v3",  // или другой доступный модель
+    //         messages: [
+    //             {
+    //                 role: "user",
+    //                 content: `Find me a movie based on this description: ${query}`
+    //             }
+    //         ]
+    //     })
+    // })
+    //     .then(response => response.json())
+    //     .then(data => displayMovies(data.choices[0].message.content))
+    //     .catch(error => console.error('Error fetching data:', error));
 });
 
 function displayMovies(moviesJson) {
