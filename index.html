@@ -11,7 +11,6 @@
         <div class="container">
             <h1>🎬 Choose Movie AI</h1>
             <p>Get personalized movie recommendations with explanations on why they'll be perfect for you.</p>
-            <button class="cta-btn">Try for Free</button>
         </div>
     </header>
 
@@ -36,8 +35,9 @@
     <section class="cta">
         <div class="container">
             <h2>Start Now</h2>
-            <p>Chat with our AI Movie Expert on Telegram for tailored recommendations.</p>
-            <button disabled class="cta-btn">Soon</button>
+            <input type="text" id="movieInput" placeholder="Enter movie preferences (e.g. 'like Interstellar, but more dynamic')">
+            <button id="searchButton">Search</button>
+            <div id="movieResults" class="movie-results"></div>
         </div>
     </section>
 
