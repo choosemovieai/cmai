@@ -6,7 +6,7 @@ const mockData = [
         genres: ["Sci-Fi", "Adventure", "Drama"],
         rating: 8.6,
         age_restriction: "PG-13",
-        poster_url: "https://example.com/poster.jpg"
+        poster_url: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     },
     {
         title: "Inception",
@@ -14,7 +14,7 @@ const mockData = [
         genres: ["Sci-Fi", "Action", "Thriller"],
         rating: 8.8,
         age_restriction: "PG-13",
-        poster_url: "https://example.com/poster2.jpg"
+        poster_url: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg"
     }
 ];
 
