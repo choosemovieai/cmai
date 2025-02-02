@@ -20,6 +20,11 @@ header {
     text-align: center;
     color: white;
     position: relative;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+section {
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 header h1 {
