@@ -26,7 +26,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    return displayMovies(mockData)
+    return displayMovies(mockData); // передаем уже массив mockData напрямую
 
     // Отправляем запрос на мое API
     // fetch(`https://api.deepseek.com/v1/chat/completions`, {
@@ -50,11 +50,10 @@ document.getElementById('searchButton').addEventListener('click', function() {
     //     .catch(error => console.error('Error fetching data:', error));
 });
 
-function displayMovies(moviesJson) {
+function displayMovies(movies) { // убрал JSON.parse, потому что это уже не строка JSON
     const resultsDiv = document.getElementById('movieResults');
     resultsDiv.innerHTML = ''; // Clear previous results
 
-    const movies = JSON.parse(moviesJson);  // Данные, которые я отправляю обратно, должны быть в формате JSON
     if (movies.length === 0) {
         resultsDiv.innerHTML = '<p>No movies found. Try a different query!</p>';
         return;
