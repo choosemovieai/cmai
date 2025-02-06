@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
                 'Authorization': `Bearer ${apiKey}`  // Используем API-ключ
             },
             body: JSON.stringify({
-                model: "deepseek-v3",
+                model: "gpt-3.5-turbo",
                 messages: [
                     {
                         role: "user",
