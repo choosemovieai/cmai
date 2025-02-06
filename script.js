@@ -8,30 +8,20 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    // Отправляем запрос на мое API
-    fetch(`https://api.deepseek.com/v1/chat/completions`, {
+    // Отправляем запрос на серверless-функцию на Netlify
+    fetch('https://choosemovieai.netlify.app/.netlify/functions/movie-api', {  // Замените на ваш домен Netlify
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer sk-97755de625d144528a4027f184d23eb4`  // Вставьте ваш ключ API
         },
-        body: JSON.stringify({
-            model: "deepseek-v3",  // или другой доступный модель
-            messages: [
-                {
-                    role: "user",
-                    content: `Find me a movie based on this description: ${query}`
-                }
-            ]
-        })
+        body: JSON.stringify({ query })  // Передаем запрос в теле запроса
     })
         .then(response => response.json())
         .then(data => displayMovies(data.choices[0].message.content))
         .catch(error => console.error('Error fetching data:', error));
 });
 
-function displayMovies(movies) { // убрал JSON.parse, потому что это уже не строка JSON
-    console.log('movies', movies)
+function displayMovies(movies) {
     const resultsDiv = document.getElementById('movieResults');
     resultsDiv.innerHTML = ''; // Clear previous results
 
