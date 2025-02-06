@@ -9,7 +9,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
     }
 
     // Отправляем запрос на серверless-функцию на Netlify
-    fetch('https://choosemovieai.netlify.app/movie-api', {  // Замените на ваш домен Netlify
+    fetch('https://choosemovieai.netlify.app/.netlify/functions/movie-api', {  // Замените на ваш домен Netlify
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
