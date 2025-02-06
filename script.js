@@ -1,22 +1,4 @@
 // script.js
-const mockData = [
-    {
-        title: "Interstellar",
-        description: "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-        genres: ["Sci-Fi", "Adventure", "Drama"],
-        rating: 8.6,
-        age_restriction: "PG-13",
-        poster_url: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
-    },
-    {
-        title: "Inception",
-        description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into a target's mind.",
-        genres: ["Sci-Fi", "Action", "Thriller"],
-        rating: 8.8,
-        age_restriction: "PG-13",
-        poster_url: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg"
-    }
-];
 
 document.getElementById('searchButton').addEventListener('click', function() {
     const query = document.getElementById('movieInput').value;
@@ -26,31 +8,30 @@ document.getElementById('searchButton').addEventListener('click', function() {
         return;
     }
 
-    return displayMovies(mockData); // передаем уже массив mockData напрямую
-
     // Отправляем запрос на мое API
-    // fetch(`https://api.deepseek.com/v1/chat/completions`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //         'Authorization': `Bearer YOUR_DEEPSEEK_API_KEY`  // Вставьте ваш ключ API
-    //     },
-    //     body: JSON.stringify({
-    //         model: "deepseek-v3",  // или другой доступный модель
-    //         messages: [
-    //             {
-    //                 role: "user",
-    //                 content: `Find me a movie based on this description: ${query}`
-    //             }
-    //         ]
-    //     })
-    // })
-    //     .then(response => response.json())
-    //     .then(data => displayMovies(data.choices[0].message.content))
-    //     .catch(error => console.error('Error fetching data:', error));
+    fetch(`https://api.deepseek.com/v1/chat/completions`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer sk-97755de625d144528a4027f184d23eb4`  // Вставьте ваш ключ API
+        },
+        body: JSON.stringify({
+            model: "deepseek-v3",  // или другой доступный модель
+            messages: [
+                {
+                    role: "user",
+                    content: `Find me a movie based on this description: ${query}`
+                }
+            ]
+        })
+    })
+        .then(response => response.json())
+        .then(data => displayMovies(data.choices[0].message.content))
+        .catch(error => console.error('Error fetching data:', error));
 });
 
 function displayMovies(movies) { // убрал JSON.parse, потому что это уже не строка JSON
+    console.log('movies', movies)
     const resultsDiv = document.getElementById('movieResults');
     resultsDiv.innerHTML = ''; // Clear previous results
 
