@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
         const apiKey = process.env.API_KEY;
 
         // Отправляем запрос на API
-        const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
+        const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
