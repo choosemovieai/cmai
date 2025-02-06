@@ -1,7 +1,5 @@
 // netlify/functions/movie-api.js
 
-const fetch = require('node-fetch');
-
 exports.handler = async (event, context) => {
     const { query } = JSON.parse(event.body);  // Получаем запрос из тела POST-запроса
 
