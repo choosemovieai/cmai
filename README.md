@@ -16,9 +16,3 @@ AI Movie Expert is an intelligent movie recommendation website that helps users 
 1. **User Input**: You provide a movie-related request. For example: *"I want something like Interstellar, but more dynamic."*
 2. **AI Recommendation**: The AI analyzes the request and suggests movies that match your preferences.
 3. **Explanations**: The AI will provide an explanation on why it picked each movie, helping you understand how it fits your preferences.
-
-## Tech Stack
-
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: [GPT-4](https://openai.com/gpt-4) (for AI recommendations), [TMDB API](https://www.themoviedb.org/documentation/api) (for movie data)
-- **Hosting**: [GitHub Pages](https://pages.github.com/) (for demo deployment)
